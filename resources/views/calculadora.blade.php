@@ -11,7 +11,7 @@
             @csrf
 
         @if(isset($resultado))
-            <br><div class="d-flex justify-content-end"><h4 style="color: blue">{{ $resultado }}</h4></div>
+            <div class="d-flex justify-content-end"><h4 style="color: blue; margin-right: 20%;">{{ $resultado }}</h4></div>
         @elseif(isset($resultado0))
            <div class="d-flex justify-content-end"><h4 style="color: red">#Error: {{ $resultado0 }}</h4></div>
         @elseif(isset($resultadoV))
@@ -45,7 +45,7 @@
 
         <button class="btn btn-info" name="operador" value="multiplicacion">Multiplicar</button>
 
-        <button class="btn btn-primary" name="operador" value="division">Division</button>
+        <button class="btn btn-primary" name="operador" value="division" style="margin-right: 60%">Division</button>
 
         <input type="hidden" name="nombre" value="{{ $nombre }}"></div>
         </form>

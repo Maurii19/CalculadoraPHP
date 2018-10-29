@@ -35,31 +35,31 @@ class calculadoraController extends Controller
       switch ($operador) {
         case 'suma':
           if(self::isVacio($num1, $num2)){
-            return $resultadoV='#Error = Introduce valores para realizar la operacion';
+            return $resultadoV='#Error: Introduce valores para realizar la operacion';
           }else{
            return $resultado=($num1+$num2);
           }
           break;
         case 'resta':
          if(self::isVacio($num1, $num2)){
-            return $resultadoV="#Error = Introduce valores para realizar la operacion";
+            return $resultadoV="#Error: Introduce valores para realizar la operacion";
           }else{
            return $resultado=($num1-$num2);
           }
           break;
         case 'multiplicacion':
          if(self::isVacio($num1, $num2)){
-            return $resultadoV="#Error = Introduce valores para realizar la operacion";
+            return $resultadoV="#Error: Introduce valores para realizar la operacion";
           }else{
            return $resultado=($num1*$num2);
           }
           break;
         case 'division':
          if(self::isVacio($num1, $num2)){
-            return $resultadoV="#Error = Introduce valores para realizar la operacion";
+            return $resultadoV="#Error: Introduce valores para realizar la operacion";
           }
           if (self::is0($num2)){
-             return $resultado0="#Error = No puedes dividir entre 0";
+             return $resultado0="#Error: No puedes dividir entre 0";
           }else{
 
             return $resultado=($num1/$num2);
@@ -67,7 +67,7 @@ class calculadoraController extends Controller
           break;
 
         default:
-          $resultado="Error";
+          $resultado="#Error";
           break;
       }
       
