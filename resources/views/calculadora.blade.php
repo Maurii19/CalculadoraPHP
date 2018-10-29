@@ -3,54 +3,55 @@
 @extends('layout.layout')
     @section('form')
         @if(isset($nombre))
-        <div class="d-flex justify-content-center"><h1>Hola {{ $nombre  }}</h1></div>
-      <div class="d-flex justify-content-center"><h3>Calculadora de {{ $nombre }}</h3></div>
+      <center><div class="d-flex justify-content-center" style="background-color: #f2f2f2; width: 100%; text-align: center; height: 100px;"><h3 style="margin-top: 40px;">Calculadora de {{ $nombre }}</h3></div></center>
         @else
-        <center><h1>Hola</h1></center>
-        <h3>Calculadora</h3>
+       <div class="d-flex justify-content-center"> <h3>Calculadora</h3></div>
         @endif
-   <br>
      <form action="{{ URL::to('/resultado') }}" method="POST">
             @csrf
-        <div class="d-flex justify-content-around">
 
-            <label>Numero 1</label>
-            <div class="align-self-center">
+        @if(isset($resultado))
+            <br><div class="d-flex justify-content-end"><h4 style="color: blue">{{ $resultado }}</h4></div>
+        @elseif(isset($resultado0))
+           <div class="d-flex justify-content-end"><h4 style="color: red">#Error: {{ $resultado0 }}</h4></div>
+        @elseif(isset($resultadoV))
+           <div class="d-flex justify-content-end"><h4 style="color: red">#Error: {{ $resultadoV }}</h4></div>
+           @endif
+
+            <div class="d-flex flex-column">
+            <div class="p-1"><label>Numero 1</label></div>
+            
                 @if(isset($num1))
-                <input type="text" name="num1" value="{{ $num1 }}">@else
-                 <input type="text" name="num1" placeholder="numero 1">
+                <div class="p-1"><input type="text" name="num1" value="{{ $num1 }}"></div>@else
+                 <div class="p-1"><input type="text" name="num1" placeholder="numero 1"></div>
                  @endif
-            </div>
-        </div>
+             </div>
+            
 
-        <div class="d-flex justify-content-around">
-            <label>Numero 2</label>
-            <div class="align-self-center">
+        <div class="d-flex flex-column">
+            <div class="p-1"><label>Numero 2</label></div>
                  @if(isset($num2))
-                <input type="text" name="num2" value="{{ $num2 }}">@else
-                 <input type="text" name="num2" placeholder="numero 2">
+                <div class="p-1"><input type="text" name="num2" value="{{ $num2 }}"></div>@else
+                 <div class="p-1"><input type="text" name="num2" placeholder="numero 2"></div>
                  @endif
 
             </div>
-        </div>
+       
 
-        <div class="d-flex justify-content-center">
-        <button class="btn btn-success" name="operador" value="suma">+</button>
+       <div class="d-flex justify-content-sm-between">
+        <button class="btn btn-success" name="operador" value="suma">Sumar</button>
 
-        <button class="btn btn-danger" name="operador" value="resta">-</button>
+        <button class="btn btn-danger" name="operador" value="resta">Restar</button>
 
-        <button class="btn btn-info" name="operador" value="multiplicacion">*</button>
+        <button class="btn btn-info" name="operador" value="multiplicacion">Multiplicar</button>
 
-        <button class="btn btn-primary" name="operador" value="division">/</button>
+        <button class="btn btn-primary" name="operador" value="division">Division</button>
 
         <input type="hidden" name="nombre" value="{{ $nombre }}"></div>
-       
         </form>
          
         <br>
-        @if(isset($resultado))
-        <div class="d-flex justify-content-center">
-           <h4 style="color: orange">{{ $resultado }}</h4></div>
-        @endif
+      
+
     @endsection
 </html>
